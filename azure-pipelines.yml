@@ -34,7 +34,7 @@ stages:
         python book_facility.py
       displayName: 'Run Booking Script'
       env:
-        ADDA_USERNAME: $(ADDA_USERNAME)  # Secure variable
-        ADDA_PASSWORD: $(ADDA_PASSWORD)  # Secure variable
+        ADDA_USERNAME: 'kripajoym@gmail.com'  # Secure variable
+        ADDA_PASSWORD: 'Adda@1234567'  # Secure variable
         BOOKING_DATE: $(BOOKING_DATE)
         TIME_SLOT: $(TIME_SLOT)
