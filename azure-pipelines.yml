@@ -1,0 +1,40 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  PYTHON_VERSION: '3.x'
+  BOOKING_DATE: '2025-03-07'    # Booking date
+  TIME_SLOT: '10:00-11:00'      # Booking time slot
+
+stages:
+- stage: Booking
+  jobs:
+  - job: BookFacility
+    displayName: 'Book Facility on Adda'
+    steps:
+    
+    # Step 1: Use Python
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '$(PYTHON_VERSION)'
+
+    # Step 2: Install Selenium and Chrome WebDriver
+    - script: |
+        pip install selenium
+        wget https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip
+        unzip chromedriver_linux64.zip
+        sudo mv chromedriver /usr/local/bin/
+      displayName: 'Install Selenium and Chrome WebDriver'
+
+    # Step 3: Run the Python Script
+    - script: |
+        python book_facility.py
+      displayName: 'Run Booking Script'
+      env:
+        ADDA_USERNAME: $(ADDA_USERNAME)  # Secure variable
+        ADDA_PASSWORD: $(ADDA_PASSWORD)  # Secure variable
+        BOOKING_DATE: $(BOOKING_DATE)
+        TIME_SLOT: $(TIME_SLOT)
