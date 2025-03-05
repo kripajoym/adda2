@@ -27,7 +27,7 @@ try:
     time.sleep(3)
 
     # Step 2: Navigate to Facility Booking
-    driver.get("https://your-adda-portal.com/facilities")
+    driver.get("https://adda.io/login")
     time.sleep(2)
 
     # Step 3: Book the Facility
