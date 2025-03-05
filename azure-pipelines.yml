@@ -6,8 +6,9 @@ pool:
 
 variables:
   PYTHON_VERSION: '3.x'
-  BOOKING_DATE: '2025-03-07'    # Booking date
-  TIME_SLOT: '10:00-11:00'      # Booking time slot
+  BOOKING_DATE: '2025-03-10'
+  START_TIME: '10:00 AM'
+  END_TIME: '2:00 PM'
 
 stages:
 - stage: Booking
@@ -34,7 +35,8 @@ stages:
         python book_facility.py
       displayName: 'Run Booking Script'
       env:
-        ADDA_USERNAME: 'kripajoym@gmail.com'  # Secure variable
-        ADDA_PASSWORD: 'Adda@1234567'  # Secure variable
+        ADDA_USERNAME: 'kripajoym@gmail.com'
+        ADDA_PASSWORD: 'Adda@1234567'
         BOOKING_DATE: $(BOOKING_DATE)
-        TIME_SLOT: $(TIME_SLOT)
+        START_TIME: $(START_TIME)
+        END_TIME: $(END_TIME)
